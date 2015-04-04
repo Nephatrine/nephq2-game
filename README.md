@@ -10,6 +10,10 @@ This is the game module for [NephQ2](https://github.com/Nephatrine/nephq2): my f
 - [Quake II](http://store.steampowered.com/app/2320/)
 - [NephQ2](https://github.com/Nephatrine/nephq2)
 
+####Build Requirements
+
+Both Visual Studio 2013 and CMake project files are contained. The project has no direct dependencies aside from the NephQ2 engine itself so you should be able to readily compile it.
+
 ####Acknowledgements
 - [id Software](http://www.idsoftware.com/) for creating the original Quake II and releasing the source to the community.
 - [Oculus VR](https://www.oculus.com/) for creating the Oculus Rift and reviving interest in virtual reality.

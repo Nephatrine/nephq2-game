@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 2.8)
+
 set(GAME_SOURCES
     ../qcommon/shared/m_flash.c
     ../qcommon/shared/q_shared.c
@@ -121,7 +123,9 @@ set(GAME_HEADERS
 	tables/levelfields.h
 )
 
-# add_definitions(-DDISABLE_FOG)
 add_library(vrgamex86 MODULE ${GAME_SOURCES} ${GAME_HEADERS})
 set_target_properties(vrgamex86 PROPERTIES PREFIX "")
-target_compile_options(vrgamex86 PRIVATE -fvisibility=hidden)
+
+if(HAS_VISIBILITY_HIDDEN)
+  target_compile_options(vrgamex86 PRIVATE -fvisibility=hidden)
+endif(HAS_VISIBILITY_HIDDEN)
