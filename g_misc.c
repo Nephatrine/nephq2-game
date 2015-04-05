@@ -3107,9 +3107,11 @@ void SP_func_clock (edict_t *self)
  trigger_transition with same name as teleporter can be used to 
  teleport multiple non-player entities
 ================================================================== */
+
+extern entlist_t DoNotMove[];
+
 void teleport_transition_ents (edict_t *transition, edict_t *teleporter, edict_t *destination)
 {
-	extern entlist_t DoNotMove;
 	int			i, j;
 	int			total=0;
 	qboolean	nogo=false;
@@ -3139,7 +3141,7 @@ void teleport_transition_ents (edict_t *transition, edict_t *teleporter, edict_t
 		if(ent->solid == SOLID_BSP) continue;
 		if((ent->solid == SOLID_TRIGGER) && !FindItemByClassname(ent->classname)) continue;
 		// Do not under any circumstances move these entities:
-		for(p=&DoNotMove, nogo=false; p->name && !nogo; p++)
+		for(p=&DoNotMove[0], nogo=false; p->name && !nogo; p++)
 			if(!Q_strcasecmp(ent->classname,p->name))
 				nogo = true;
 		if(nogo) continue;
@@ -3186,7 +3188,7 @@ void teleport_transition_ents (edict_t *transition, edict_t *teleporter, edict_t
 		if(ent->solid == SOLID_BSP) continue;
 		if((ent->solid == SOLID_TRIGGER) && !FindItemByClassname(ent->classname)) continue;
 		// Do not under any circumstances move these entities:
-		for(p=&DoNotMove, nogo=false; p->name && !nogo; p++)
+		for(p=&DoNotMove[0], nogo=false; p->name && !nogo; p++)
 			if(!Q_strcasecmp(ent->classname,p->name))
 				nogo = true;
 		if(nogo) continue;
