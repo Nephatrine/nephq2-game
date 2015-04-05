@@ -150,6 +150,14 @@ set(GAME_SOURCES
       g_vehicle.c
       g_weapon.c
       km_cvar.c )
+if( MSVC )
+  set( GAME_HEADERS
+         ${GAME_HEADERS}
+         resource.h )
+  set( GAME_SOURCES
+         ${GAME_SOURCES}
+         gamex86.rc )
+endif()
 
 #
 # Group Source Code
@@ -188,4 +196,10 @@ add_library( vrgamex86 MODULE ${GAME_BASE} )
 set_target_properties( vrgamex86 PROPERTIES PREFIX "" )
 if( HAS_VISIBILITY_HIDDEN )
   target_compile_options( vrgamex86 PRIVATE -fvisibility=hidden )
+endif()
+if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
+  add_definitions( -D_CRT_SECURE_NO_WARNINGS )
+endif()
+if( MSVC )
+  set( CMAKE_MODULE_LINKER_FLAGS "${CMAKE_MODULE_LINKER_FLAGS} /DEF:\"${CMAKE_CURRENT_SOURCE_DIR}/gamex86.def\"" )
 endif()
