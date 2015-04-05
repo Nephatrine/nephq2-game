@@ -1123,7 +1123,7 @@ void Hud_Off();
 // g_svcmds.c
 //
 void	ServerCommand (void);
-qboolean SV_FilterPacket (char *from);
+int		SV_FilterPacket (char *from);
 //
 // g_thing.c
 //
@@ -1721,7 +1721,7 @@ struct edict_s
 	int			max_health;
 	int			gib_health;
 	int			deadflag;
-	qboolean	show_hostile;
+	int			show_hostile;
 
 	// Lazarus: health2 and mass2 are passed from jorg to makron health and mass
 	int			health2;
