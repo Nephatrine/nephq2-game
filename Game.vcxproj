@@ -218,11 +218,11 @@
     <ClCompile Include="player\p_weapon.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\qcommon\shared\game.h" />
     <ClInclude Include="..\qcommon\shared\q_shared.h" />
     <ClInclude Include="acesrc\acebot.h" />
     <ClInclude Include="g_ctf.h" />
     <ClInclude Include="g_local.h" />
-    <ClInclude Include="game.h" />
     <ClInclude Include="km_cvar.h" />
     <ClInclude Include="laz_misc.h" />
     <ClInclude Include="monster\m_actor.h" />
@@ -248,33 +248,17 @@
     <ClInclude Include="monster\m_soldier.h" />
     <ClInclude Include="monster\m_supertank.h" />
     <ClInclude Include="monster\m_tank.h" />
-    <ClInclude Include="m_actor.h" />
-    <ClInclude Include="m_berserk.h" />
-    <ClInclude Include="m_boss2.h" />
-    <ClInclude Include="m_boss31.h" />
-    <ClInclude Include="m_boss32.h" />
-    <ClInclude Include="m_brain.h" />
-    <ClInclude Include="m_chick.h" />
-    <ClInclude Include="m_flipper.h" />
-    <ClInclude Include="m_float.h" />
-    <ClInclude Include="m_flyer.h" />
-    <ClInclude Include="m_gladiator.h" />
-    <ClInclude Include="m_gunner.h" />
-    <ClInclude Include="m_hover.h" />
-    <ClInclude Include="m_infantry.h" />
-    <ClInclude Include="m_insane.h" />
-    <ClInclude Include="m_medic.h" />
-    <ClInclude Include="m_mutant.h" />
-    <ClInclude Include="m_parasite.h" />
-    <ClInclude Include="m_player.h" />
-    <ClInclude Include="m_soldier.h" />
-    <ClInclude Include="m_supertank.h" />
-    <ClInclude Include="m_tank.h" />
     <ClInclude Include="player\p_menu.h" />
     <ClInclude Include="player\p_text.h" />
-    <ClInclude Include="p_menu.h" />
-    <ClInclude Include="p_text.h" />
     <ClInclude Include="pak.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="tables\clientfields.h" />
+    <ClInclude Include="tables\fields.h" />
+    <ClInclude Include="tables\gamefunc_decs.h" />
+    <ClInclude Include="tables\gamefunc_list.h" />
+    <ClInclude Include="tables\gamemmove_decs.h" />
+    <ClInclude Include="tables\gamemmove_list.h" />
+    <ClInclude Include="tables\levelfields.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="gamex86.rc" />
