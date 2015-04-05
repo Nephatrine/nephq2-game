@@ -72,7 +72,7 @@ float SnapToEights(float x);
 float UTIL_AngleDistance(float next,float cur);
 float UTIL_AngleMod(float a);
 float UTIL_ApproachAngle(float target,float value,float speed);
-float realrange(edict_t *this,edict_t *that);
+float realrange(edict_t *this_one,edict_t *that);
 float vectoyaw(vec3_t vec);
 float vectoyaw2(vec3_t vec);
 float weight_on_top(edict_t *ent);

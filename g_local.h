@@ -1326,7 +1326,7 @@ void hintpath_stop (edict_t *monster);
 qboolean hintcheck_monsterlost (edict_t *monster);
 void SetupHintPaths (void);
 
-float realrange (edict_t *this, edict_t *that);
+float realrange (edict_t *this_one, edict_t *that);
 qboolean has_valid_enemy (edict_t *monster);
 
 //============================================================================
