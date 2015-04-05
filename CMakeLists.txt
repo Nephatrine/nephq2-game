@@ -13,6 +13,14 @@ endif()
 set( EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR} )
 set( LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR} )
 
+if( CMAKE_SIZEOF_VOID_P MATCHES 4 )
+  set( ARCH_NAME "x86" )
+elseif( CMAKE_SIZEOF_VOID_P MATCHES 8 )
+  set( ARCH_NAME "x86-64" )
+endif()
+set( CMAKE_SHARED_MODULE_SUFFIX "_${ARCH_NAME}" )
+set( CMAKE_DEBUG_POSTFIX "_d" )
+
 #
 # Source Files
 #
@@ -192,10 +200,10 @@ source_group( "Game\\Tables" FILES ${SAVE_HEADERS} )
 # Build Game Module
 #
 
-add_library( vrgamex86 MODULE ${GAME_BASE} )
-set_target_properties( vrgamex86 PROPERTIES PREFIX "" )
+add_library( Game MODULE ${GAME_BASE} )
+set_target_properties( Game PROPERTIES PREFIX "" )
 if( HAS_VISIBILITY_HIDDEN )
-  target_compile_options( vrgamex86 PRIVATE -fvisibility=hidden )
+  target_compile_options( Game PRIVATE -fvisibility=hidden )
 endif()
 if( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
   add_definitions( -D_CRT_SECURE_NO_WARNINGS )
