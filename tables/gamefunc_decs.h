@@ -452,7 +452,7 @@ void FadeSink(edict_t *ent);
 void FetchClientEntData(edict_t *ent);
 void Fog(edict_t *ent);
 void Fog_Init(void);
-void Fog_Off(edict_t *player_ent);
+void Fog_Off(void);
 void ForcewallOff(edict_t *player);
 void FoundTarget(edict_t *self);
 void G_CheckChaseStats(edict_t *ent);

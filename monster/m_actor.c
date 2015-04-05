@@ -146,7 +146,6 @@ mframe_t actor_frames_walk [] =
 };
 mmove_t actor_move_walk = {FRAME_run1, FRAME_run6, actor_frames_walk, NULL};
 
-mmove_t actor_move_run;
 void actor_walk (edict_t *self)
 {
 	// prevent foolishness:
@@ -1158,7 +1157,6 @@ qboolean actor_checkattack (edict_t *self)
 	return false;
 }
 
-mmove_t actor_move_jump;
 void actor_end_jump (edict_t *self)
 {
 	if(self->flags & FL_ROBOT)
