@@ -676,7 +676,7 @@ void Weapon_Generic2 (edict_t *ent, int FRAME_ACTIVATE_LAST, int FRAME_FIRE_LAST
 //ZOID
 				CTFApplyHasteSound(ent);
 //ZOID
-				fire (ent, ((ent->client->latched_buttons|ent->client->buttons) & BUTTON_ATTACK2) );
+				fire (ent, ((ent->client->latched_buttons|ent->client->buttons) & BUTTON_ATTACK2) != 0 );
 				break;
 			}
 		}

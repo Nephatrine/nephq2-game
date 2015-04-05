@@ -229,7 +229,7 @@ void ClientObituary (edict_t *self, edict_t *inflictor, edict_t *attacker)
 
 	if (deathmatch->value || coop->value || !deathmatch->value)
 	{
-		ff = meansOfDeath & MOD_FRIENDLY_FIRE;
+		ff = (meansOfDeath & MOD_FRIENDLY_FIRE) != 0;
 		mod = meansOfDeath & ~MOD_FRIENDLY_FIRE;
 		message = NULL;
 		message2 = "";

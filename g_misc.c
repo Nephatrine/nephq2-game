@@ -75,7 +75,7 @@ void Use_Areaportal (edict_t *ent, edict_t *other, edict_t *activator)
 {
 	ent->count ^= 1;		// toggle state
 //	gi.dprintf ("portalstate: %i = %i\n", ent->style, ent->count);
-	gi.SetAreaPortalState (ent->style, ent->count);
+	gi.SetAreaPortalState (ent->style, ent->count != 0);
 }
 
 /*QUAKED func_areaportal (0 0 0) ?
