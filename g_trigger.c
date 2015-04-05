@@ -979,10 +979,10 @@ void trigger_scales_think (edict_t *self)
 			if (!e->count)
 				continue;
 			num = e->count;
-			if(weight < pow(10,num-1))
+			if(weight < pow(10.0,num-1))
 				e->s.frame = 12;
 			else
-				e->s.frame = ( weight % (int)pow(10,num) ) / ( pow(10,num-1) );
+				e->s.frame = ( weight % (int)pow(10.0,num) ) / ( pow(10.0,num-1) );
 		}
 	}
 	self->nextthink = level.time + FRAMETIME;

@@ -2452,8 +2452,8 @@ float PM_CmdScale( usercmd_t *cmd ) {
 		return 0;
 	}
 
-	total = sqrt( cmd->forwardmove * cmd->forwardmove
-		+ cmd->sidemove * cmd->sidemove + cmd->upmove * cmd->upmove );
+	total = sqrt( (float)(cmd->forwardmove * cmd->forwardmove
+		+ cmd->sidemove * cmd->sidemove + cmd->upmove * cmd->upmove) );
 	scale = max / total;
 
 	return scale;
