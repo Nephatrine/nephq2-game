@@ -259,7 +259,7 @@ void ThrowGib (edict_t *self, char *gibname, int damage, int type)
 	gib = G_Spawn();
 
 	gib->classname = "gib";
-	//gib->classname = gi.TagMalloc (4,TAG_LEVEL);
+	//gib->classname = (char*)gi.TagMalloc (4,TAG_LEVEL);
 	//strcpy(gib->classname,"gib");
 
 	// Lazarus: mapper-definable gib class
@@ -272,7 +272,7 @@ void ThrowGib (edict_t *self, char *gibname, int damage, int type)
 	}
 
 	// Save gibname and type for level transition gibs
-	gib->key_message = gi.TagMalloc (strlen(modelname)+1,TAG_LEVEL);
+	gib->key_message = (char*)gi.TagMalloc (strlen(modelname)+1,TAG_LEVEL);
 	strcpy(gib->key_message, modelname);
 	gib->style = type;
 
@@ -394,7 +394,7 @@ void ThrowHead (edict_t *self, char *gibname, int damage, int type)
 	}
 
 	// Save gibname and type for level transition gibs
-	self->key_message = gi.TagMalloc (strlen(modelname)+1,TAG_LEVEL);
+	self->key_message = (char*)gi.TagMalloc(strlen(modelname) + 1, TAG_LEVEL);
 	strcpy(self->key_message, modelname);
 
 	self->style = type;
@@ -2952,7 +2952,7 @@ void func_clock_format_countdown (edict_t *self)
 
 	if (size < CLOCK_MESSAGE_SIZE) {
 		gi.TagFree (self->message);
-		self->message = gi.TagMalloc (CLOCK_MESSAGE_SIZE, TAG_LEVEL);
+		self->message = (char*)gi.TagMalloc (CLOCK_MESSAGE_SIZE, TAG_LEVEL);
 		//gi.dprintf ("WARNING: func_clock_format_countdown: self->message is too small: %i\n", size);
 	} 
 	// end Skuller's hack
@@ -3082,7 +3082,7 @@ void SP_func_clock (edict_t *self)
 
 	func_clock_reset (self);
 
-	self->message = gi.TagMalloc (CLOCK_MESSAGE_SIZE, TAG_LEVEL);
+	self->message = (char*)gi.TagMalloc (CLOCK_MESSAGE_SIZE, TAG_LEVEL);
 
 	self->think = func_clock_think;
 
@@ -3891,7 +3891,7 @@ void SP_target_precipitation (edict_t *ent)
 		// Knightmare- check for "models/" or "sprites/" already in path
 		if ( strncmp(ent->usermodel, "models/", 7) && strncmp(ent->usermodel, "sprites/", 8) )
 		{
-			buffer = gi.TagMalloc(strlen(ent->usermodel)+10,TAG_LEVEL);
+			buffer = (char*)gi.TagMalloc(strlen(ent->usermodel)+10,TAG_LEVEL);
 			if(strstr(ent->usermodel,".sp2"))
 				sprintf(buffer, "sprites/%s", ent->usermodel);
 			else
@@ -4105,7 +4105,7 @@ void SP_target_fountain (edict_t *ent)
 	// Knightmare- check for "models/" or "sprites/" already in path
 	if ( strncmp(ent->usermodel, "models/", 7) && strncmp(ent->usermodel, "sprites/", 8) )
 	{
-		buffer = gi.TagMalloc(strlen(ent->usermodel)+10,TAG_LEVEL);
+		buffer = (char*)gi.TagMalloc(strlen(ent->usermodel)+10,TAG_LEVEL);
 		if(strstr(ent->usermodel,".sp2"))
 			sprintf(buffer, "sprites/%s", ent->usermodel);
 		else
@@ -4250,7 +4250,7 @@ int PatchDeadSoldier ()
 				fseek(fpak,pakitem.start,SEEK_SET);
 				fread(&model, sizeof(dmdl_t), 1, fpak);
 				datasize = model.ofs_end - model.ofs_skins;
-				if ( !(data = G_Malloc (datasize)) )	// make sure freed locally
+				if ( !(data = (byte*)G_Malloc (datasize)) )	// make sure freed locally
 				{
 					fclose(fpak);
 					gi.dprintf ("PatchDeadSoldier: Could not allocate memory for model\n");
@@ -4271,7 +4271,7 @@ int PatchDeadSoldier ()
 		fread (&model, sizeof (dmdl_t), 1, infile);
 	
 		datasize = model.ofs_end - model.ofs_skins;
-		if ( !(data = G_Malloc (datasize)) )	// make sure freed locally
+		if ( !(data = (byte*)G_Malloc (datasize)) )	// make sure freed locally
 		{
 			gi.dprintf ("PatchMonsterModel: Could not allocate memory for model\n");
 			return 0;

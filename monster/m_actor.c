@@ -1278,7 +1278,7 @@ void SP_misc_actor (edict_t *self)
 		if(p) *p = 0;
 	}
 	else {
-		self->usermodel = G_Malloc(5);
+		self->usermodel = (char*)G_Malloc(5);
 		strcpy(self->usermodel,"male");
 	}
 	if( (!Q_strcasecmp(self->usermodel,"male")) ||
