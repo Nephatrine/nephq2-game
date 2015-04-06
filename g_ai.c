@@ -1728,7 +1728,7 @@ static int chase_angle[] = {270,450,225,495,540};
 qboolean ai_chicken (edict_t *self, edict_t *badguy)
 {
 	int		i;
-	edict_t	*thing;
+//	edict_t	*thing;
 	vec3_t	atk, dir, best_dir, end, forward;
 	vec_t	travel, yaw;
 	vec3_t	mins, maxs;
@@ -1801,7 +1801,7 @@ qboolean ai_chicken (edict_t *self, edict_t *badguy)
 		}
 	}
 	return false;
-
+#if 0
 	if(best_dist < 32)
 		return false;
 
@@ -1821,4 +1821,5 @@ qboolean ai_chicken (edict_t *self, edict_t *badguy)
 	self->monsterinfo.run(self);
 	self->monsterinfo.chicken_framenum = level.framenum;
 	return true;
+#endif
 }

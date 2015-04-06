@@ -134,8 +134,8 @@ void DeleteNode(int p)  /* deletes node p from tree */
 
 int Encode(char *filename, uint8_t *buffer, int bufsize, int version)
 {
-	int  i, c, len, r, s, last_match_length, code_buf_ptr;
-	uint8_t  code_buf[17], mask;
+	int  i, len, r, s, last_match_length, code_buf_ptr;
+	uint8_t  code_buf[17], mask, c;
 	int bufptr = 0;
 	FILE *pOut;
 	//int version;
@@ -233,7 +233,8 @@ int Encode(char *filename, uint8_t *buffer, int bufsize, int version)
 // Be careful with your buffersize, will return an exit of -1 if failure
 int Decode(char *filename, uint8_t *buffer, int bufsize)	/* Just the reverse of Encode(). */
 {
-	int  i, j, k, r, c;
+	int  i, j, k, r, c_check;
+	uint8_t c;
 	uint32_t  flags;
 	int bufptr=0;
 	FILE *pIn;
@@ -252,11 +253,12 @@ int Decode(char *filename, uint8_t *buffer, int bufsize)	/* Just the reverse of 
 	r = N - F;  flags = 0;
 	for ( ; ; ) {
 		if (((flags >>= 1) & 256) == 0) {
-			if ((c = getc(pIn)) == EOF) break;
-			flags = c | 0xff00;		/* uses higher byte cleverly */
+			if ((c_check = getc(pIn)) == EOF) break;
+			flags = c_check | 0xff00;		/* uses higher byte cleverly */
 		}							/* to count eight */
 		if (flags & 1) {
-			if ((c = getc(pIn)) == EOF) break;
+			if ((c_check = getc(pIn)) == EOF) break;
+			c = c_check & 0xFF;
 			buffer[bufptr++] = c;	
 			if(bufptr > bufsize)
 				return -1; // check for overflow

@@ -493,11 +493,11 @@ void ACEND_InitNodes(void)
 ///////////////////////////////////////////////////////////////////////
 void ACEND_ShowNode(int node)
 {
-	edict_t *ent;
+//	edict_t *ent;
 
 	return; // commented out for now. uncommend to show nodes during debugging,
 	        // but too many will cause overflows. You have been warned.
-
+#if 0
 	ent = G_Spawn();
 
 	ent->movetype = MOVETYPE_NONE;
@@ -518,7 +518,7 @@ void ACEND_ShowNode(int node)
 
 	VectorCopy(nodes[node].origin,ent->s.origin);
 	gi.linkentity (ent);
-
+#endif
 }
 
 ///////////////////////////////////////////////////////////////////////
