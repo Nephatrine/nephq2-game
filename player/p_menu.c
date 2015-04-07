@@ -121,7 +121,7 @@ void PMenu_Do_Update(edict_t *ent)
 	char string[1400];
 	int i;
 	pmenu_t *p;
-	int x;
+	size_t x;
 	pmenuhnd_t *hnd;
 	char *t;
 	qboolean alt = false;
@@ -145,9 +145,9 @@ void PMenu_Do_Update(edict_t *ent)
 		}
 		sprintf(string + strlen(string), "yv %d ", 32 + i * 8);
 		if (p->align == PMENU_ALIGN_CENTER)
-			x = 196/2 - strlen(t)*4 + 64;
+			x = 196/2 - (int)strlen(t)*4 + 64;
 		else if (p->align == PMENU_ALIGN_RIGHT)
-			x = 64 + (196 - strlen(t)*8);
+			x = 64 + (196 - (int)strlen(t)*8);
 		else
 			x = 64;
 
@@ -214,9 +214,9 @@ void PMenu_Update(edict_t *ent)
 		}
 		sprintf(string + strlen(string), "yv %d ", 32 + i * 8);
 		if (p->align == PMENU_ALIGN_CENTER)
-			x = 196/2 - strlen(t)*4 + 64;
+			x = 196/2 - (int)strlen(t)*4 + 64;
 		else if (p->align == PMENU_ALIGN_RIGHT)
-			x = 64 + (196 - strlen(t)*8);
+			x = 64 + (196 - (int)strlen(t)*8);
 		else
 			x = 64;
 

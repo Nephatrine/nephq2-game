@@ -2456,7 +2456,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 {
 	char	entry[1024];
 	char	string[1400];
-	int		len;
+	size_t		len;
 	int		i, j, k, n;
 	int		sorted[3][MAX_CLIENTS];
 	int		sortedscores[3][MAX_CLIENTS];
@@ -2465,7 +2465,7 @@ void CTFScoreboardMessage (edict_t *ent, edict_t *killer)
 	gclient_t	*cl;
 	edict_t		*cl_ent;
 	int team;
-	int maxsize = 1000;
+	size_t maxsize = 1000;
 
 	// sort the clients by team and score
 	total[0] = total[1] = total[2]= 0;

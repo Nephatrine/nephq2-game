@@ -165,9 +165,9 @@ void Text_Update(edict_t *ent)
 		{
 			sprintf(string + strlen(string), "yv %d ", y0 + 24 + i * 8);
 			if (align == TEXT_CENTER)
-				x = x0 + 20 + (hnd->page_width-1-strlen(t))*4;
+				x = x0 + 20 + (hnd->page_width-1-(int)strlen(t))*4;
 			else if (align == TEXT_RIGHT)
-				x = x0 + 20 + (hnd->page_width-1-strlen(t))*8;
+				x = x0 + 20 + (hnd->page_width-1-(int)strlen(t))*8;
 			else
 				x = x0 + 20;
 			if(x != xlast)
@@ -242,7 +242,7 @@ void Text_Prev(edict_t *ent)
 
 void Do_Text_Display(edict_t *activator, int flags, char *message)
 {
-	int			/*i,*/ L;
+	size_t			/*i,*/ L;
 	byte		*p1, *p2, *p3;
 	char		sound[64];
 	texthnd_t	*hnd;

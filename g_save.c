@@ -247,12 +247,12 @@ void InitGame (void)
         
         for (i = 0; mmoveList[i].mmoveStr; i++)
         {
-            mmoveList[i].mmoveHash = gi.Hash32(mmoveList[i].mmoveStr, strlen(mmoveList[i].mmoveStr));
+            mmoveList[i].mmoveHash = gi.Hash32(mmoveList[i].mmoveStr, (int)strlen(mmoveList[i].mmoveStr));
         }
         
         for (i = 0; functionList[i].funcStr; i++)
         {
-            functionList[i].funcHash = gi.Hash32(functionList[i].funcStr, strlen(functionList[i].funcStr));
+            functionList[i].funcHash = gi.Hash32(functionList[i].funcStr, (int)strlen(functionList[i].funcStr));
         }
         
         gi.dprintf(" Done!\n");
@@ -492,7 +492,7 @@ FindFunctionByName(char *name)
 {
     int i;
 #ifdef Q2VR_ENGINE_MOD
-    hash32_t nameHash = gi.Hash32(name, strlen(name));
+    hash32_t nameHash = gi.Hash32(name, (int)strlen(name));
 #endif
     for (i = 0; functionList[i].funcStr; i++)
     {
@@ -543,7 +543,7 @@ FindMmoveByName(char *name)
 {
     int i;
 #ifdef Q2VR_ENGINE_MOD
-    hash32_t nameHash = gi.Hash32(name, strlen(name));
+    hash32_t nameHash = gi.Hash32(name, (int)strlen(name));
 #endif
     for (i = 0; mmoveList[i].mmoveStr; i++)
     {
@@ -573,7 +573,7 @@ void
 WriteField1(FILE *f, field_t *field, byte *base)
 {
     void *p;
-    int len;
+    size_t len;
     int index;
     functionList_t *func;
     mmoveList_t *mmove;
@@ -606,7 +606,7 @@ WriteField1(FILE *f, field_t *field, byte *base)
                 len = 0;
             }
             
-            *(int *)p = len;
+            *(size_t *)p = len;
             break;
         case F_EDICT:
             
@@ -665,7 +665,7 @@ WriteField1(FILE *f, field_t *field, byte *base)
                 len = strlen(func->funcStr)+1;
             }
             
-            *(int *)p = len;
+            *(size_t *)p = len;
             break;
         case F_MMOVE:
             
@@ -685,7 +685,7 @@ WriteField1(FILE *f, field_t *field, byte *base)
                 len = strlen(mmove->mmoveStr)+1;
             }
             
-            *(int *)p = len;
+            *(size_t *)p = len;
             break;
         default:
             gi.error("WriteEdict: unknown field type");
@@ -695,7 +695,7 @@ WriteField1(FILE *f, field_t *field, byte *base)
 void
 WriteField2(FILE *f, field_t *field, byte *base)
 {
-    int len;
+    size_t len;
     void *p;
     functionList_t *func;
     mmoveList_t *mmove;

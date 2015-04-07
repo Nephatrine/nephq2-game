@@ -3678,7 +3678,7 @@ void use_target_change (edict_t *self, edict_t *other, edict_t *activator)
 	char	*buffer;
 	char	*target;
 	char	*newtarget;
-	int		L;
+	size_t		L;
 	int		newteams=0;
 	edict_t	*target_ent;
 

@@ -478,7 +478,7 @@ char *G_CopyString (char *in)
 	return out;
 }
 
-void *G_Malloc( int32_t size )
+void *G_Malloc( size_t size )
 {
     return gi.TagMalloc(size, TAG_LEVEL);
 }

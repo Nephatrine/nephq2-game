@@ -706,10 +706,10 @@ extern  gclient_t       *g_clients;
 #define LLOFS(x) offsetof(level_locals_t, x)
 #define CLOFS(x) offsetof(gclient_t, x)
 #else
-#define	FOFS(x) (int)&(((edict_t *)0)->x)
-#define	STOFS(x) (int)&(((spawn_temp_t *)0)->x)
-#define	LLOFS(x) (int)&(((level_locals_t *)0)->x)
-#define	CLOFS(x) (int)&(((gclient_t *)0)->x)
+#define	FOFS(x) (intptr_t)&(((edict_t *)0)->x)
+#define	STOFS(x) (intptr_t)&(((spawn_temp_t *)0)->x)
+#define	LLOFS(x) (intptr_t)&(((level_locals_t *)0)->x)
+#define	CLOFS(x) (intptr_t)&(((gclient_t *)0)->x)
 #endif
 
 #define random()	((rand () & 0x7fff) / ((float)0x7fff))
@@ -1162,7 +1162,7 @@ void	G_FreeEdict (edict_t *e);
 void	G_TouchTriggers (edict_t *ent);
 void	G_TouchSolids (edict_t *ent);
 char	*G_CopyString (char *in);
-void    *G_Malloc (int32_t size);
+void    *G_Malloc (size_t size);
 void    G_Free(void * block);
 
 void	stuffcmd(edict_t *ent,char *command);

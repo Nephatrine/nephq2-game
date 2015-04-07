@@ -1751,7 +1751,7 @@ qboolean InPak(char *basedir, char *gamedir, char *filename)
 {
 	char			pakfile[256];
 	int				k, kk;
-	int				num, numitems;
+	size_t				num, numitems;
 	FILE			*f;
 	pak_header_t	pakheader;
 	pak_item_t		pakitem;
@@ -1782,7 +1782,7 @@ qboolean InPak(char *basedir, char *gamedir, char *filename)
 		strcat(pakfile,va("/pak%d.pak",k));
 		if (NULL != (f = fopen(pakfile, "rb")))
 		{
-			num=fread(&pakheader,1,sizeof(pak_header_t),f);
+			num=fread(&pakheader,1,(int)sizeof(pak_header_t),f);
 			if(num >= sizeof(pak_header_t))
 			{
 				if( pakheader.id[0] == 'P' &&

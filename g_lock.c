@@ -80,7 +80,7 @@ void lock_digit_increment (edict_t *digit, edict_t *activator)
 void lock_initialize (edict_t *lock)
 {
 	edict_t *e;
-	int		n, l;
+	size_t		n, l;
 	int		numdigits;
 	char	c;
 
@@ -147,7 +147,7 @@ void SP_target_lock (edict_t *self)
 //
 void lock_code_use (edict_t *self, edict_t *other, edict_t *activator)
 {
-	int		i, L;
+	size_t		i, L;
 	char	message[64];
 	if(self->spawnflags & 1)
 	{
@@ -191,7 +191,7 @@ void SP_target_lock_code (edict_t *self)
 
 void lock_clue_use (edict_t *self, edict_t *other, edict_t *activator)
 {
-	int		i, L;
+	size_t		i, L;
 	if(self->spawnflags & 1)
 	{
 		if(!strlen(game.lock_code))

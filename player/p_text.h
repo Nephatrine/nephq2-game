@@ -30,9 +30,9 @@ typedef struct texthnd_s {
 	struct text_s *lines;
 	int		nlines;
 	int		curline;
-	int		size;
+	size_t		size;
 	int		flags;
-	int		allocated;
+	size_t		allocated;
 	int		page_length;
 	int		page_width;
 	float	last_update;
