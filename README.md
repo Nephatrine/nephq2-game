@@ -18,5 +18,5 @@ Both Visual Studio 2013 and CMake project files are contained. The project has n
 - [id Software](http://www.idsoftware.com/) for creating the original Quake II and releasing the source to the community.
 - [Oculus VR](https://www.oculus.com/) for creating the Oculus Rift and reviving interest in virtual reality.
 - [Knightmare](http://www.markshan.com/knightmare/) for his work on the KMQuake II engine.
-- [Luke Groeninger](https://github.com/dghost) for his work on Quake2VR.
+- [Luke Groeninger](https://github.com/dghost) for his work on Quake II VR.
 
